@@ -256,11 +256,12 @@ func TestFetchPokemonDetails(t *testing.T) {
 		httpClient: http.Client{
 			Timeout: 5 * time.Second,
 		},
-		baseURL: ts.URL,
 	}
+	// Override the baseURL with the test server URL
+	client.baseURL = ts.URL
 
 	// Call the FetchPokemonDetails function
-	resp, err := client.FetchPokemonDetails(ts.URL + "/pokemon/pikachu")
+	resp, err := client.FetchPokemonDetails("pikachu")
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
 	}
