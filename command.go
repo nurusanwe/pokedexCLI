@@ -123,10 +123,10 @@ func commandCatch(conf *config, args ...string) error {
 func commandInspect(conf *config, args ...string) error {
 
 	if len(args) != 1 {
-		return errors.New("you must provide a unique location name")
+		return errors.New("you must provide a pokemon name")
 	}
 
-	name := args[0]
+	name := strings.ToLower(args[0])
 	if _, exists := conf.caughtPokemon[name]; !exists {
 		fmt.Println("you have not caught that pokemon")
 		return nil
